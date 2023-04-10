@@ -60,4 +60,4 @@ class Affirmation(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.type
+        return self.message
