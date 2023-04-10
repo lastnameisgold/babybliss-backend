@@ -71,4 +71,4 @@ class AffirmationSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Affirmation
-        fields = ('date', 'message', 'user')
+        fields = ('message', 'user')
