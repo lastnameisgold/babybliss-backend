@@ -37,7 +37,7 @@ class BabySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Baby
-        fields = ('name', 'age', 'gender', 'user', 'diapers', 'feedings')
+        fields = ('name', 'dob', 'gender', 'user', 'diapers', 'feedings')
 
 
 class DiaperSerializer(serializers.HyperlinkedModelSerializer):
@@ -59,7 +59,7 @@ class FeedingSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Feeding
-        fields = ('date', 'time', 'duration', 'amount',
+        fields = ('log', 'amount',
                   'breastFed', 'bottleFed', 'notes', 'baby')
 
 

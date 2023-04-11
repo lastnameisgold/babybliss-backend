@@ -1,9 +1,14 @@
 from django.urls import path
 from . import views
+# from .views import CreateUserView, UserView
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
-    path('', views.BabyList.as_view(), name='baby_list'),
+    path('home/', views.HomeView.as_view(), name='home'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('api/user/', views.UserView.as_view(), name='user'),
+    path('createuser/', views.CreateUserView.as_view(), name='createuser'),
+    path('babies/', views.BabyList.as_view(), name='baby_list'),
     path('users/', views.UserList.as_view(), name='user_list'),
     path('diapers/', views.DiaperList.as_view(), name='diaper_list'),
     path('feedings/', views.FeedingList.as_view(), name='feeding_list'),
