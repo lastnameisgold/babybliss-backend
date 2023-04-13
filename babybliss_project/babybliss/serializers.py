@@ -41,21 +41,29 @@ class BabySerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DiaperSerializer(serializers.HyperlinkedModelSerializer):
-    baby = serializers.HyperlinkedRelatedField(
-        view_name='baby_detail',
-        many=False,
-        read_only=True)
+    # baby = serializers.HyperlinkedRelatedField(
+    #     view_name='baby_detail',
+    #     many=False,
+    #     read_only=True)
+
+    # baby = BabySerializer(
+    #     read_only=True
+    # )
 
     class Meta:
         model = Diaper
-        fields = ('log', 'diaper', 'rash', 'notes', 'baby')
+        fields = ('log', 'diaper', 'rash', 'notes')
 
 
 class FeedingSerializer(serializers.HyperlinkedModelSerializer):
-    baby = serializers.HyperlinkedRelatedField(
-        view_name='baby_detail',
-        many=False,
-        read_only=True)
+    # baby = serializers.HyperlinkedRelatedField(
+    #     view_name='baby_detail',
+    #     many=False,
+    #     read_only=True)
+
+    baby = BabySerializer(
+        read_only=True
+    )
 
     class Meta:
         model = Feeding

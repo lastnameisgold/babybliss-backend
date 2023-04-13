@@ -34,7 +34,7 @@ class Diaper(models.Model):
     diaper = models.IntegerField(choices=DIAPER_CHOICES, default=1)
     rash = models.BooleanField()
     notes = models.TextField(blank=True, default='')
-    baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
+    # baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.get_diaper_display()} - {self.log.strftime('%Y-%m-%d %H:%M:%S')}"
