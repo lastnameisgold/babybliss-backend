@@ -41,15 +41,17 @@ class Diaper(models.Model):
 
 
 class Feeding(models.Model):
+    FEEDING_CHOICES = (
+        (1, 'Bottle'),
+        (2, 'Breast'),
+    )
     log = models.DateTimeField()
     amount = models.PositiveIntegerField()
-    breastFed = models.BooleanField()
-    bottleFed = models.BooleanField()
+    method = models.IntegerField(choices=FEEDING_CHOICES, default=1)
     notes = models.TextField(blank=True, default='')
-    baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.log.strftime('%Y-%m-%d %H:%M:%S')} - {self.baby.name}"
+        return f"{self.log.strftime('%Y-%m-%d %H:%M:%S')}"
 
 
 class Affirmation(models.Model):

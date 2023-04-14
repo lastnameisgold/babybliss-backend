@@ -61,14 +61,14 @@ class FeedingSerializer(serializers.HyperlinkedModelSerializer):
     #     many=False,
     #     read_only=True)
 
-    baby = BabySerializer(
-        read_only=True
-    )
+    # baby = BabySerializer(
+    #     read_only=True
+    # )
 
     class Meta:
         model = Feeding
         fields = ('log', 'amount',
-                  'breastFed', 'bottleFed', 'notes', 'baby')
+                  'method', 'notes')
 
 
 class AffirmationSerializer(serializers.HyperlinkedModelSerializer):
