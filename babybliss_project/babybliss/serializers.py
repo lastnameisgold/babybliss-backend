@@ -41,10 +41,10 @@ class BabySerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DiaperSerializer(serializers.HyperlinkedModelSerializer):
-    # baby = serializers.HyperlinkedRelatedField(
-    #     view_name='baby_detail',
-    #     many=False,
-    #     read_only=True)
+    baby = serializers.HyperlinkedRelatedField(
+        view_name='baby_detail',
+        many=False,
+        read_only=True)
 
     # baby = BabySerializer(
     #     read_only=True
@@ -52,23 +52,28 @@ class DiaperSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Diaper
-        fields = ('log', 'diaper', 'rash', 'notes')
+        fields = ('log', 'diaper', 'rash', 'notes', 'baby')
 
 
 class FeedingSerializer(serializers.HyperlinkedModelSerializer):
-    # baby = serializers.HyperlinkedRelatedField(
-    #     view_name='baby_detail',
-    #     many=False,
-    #     read_only=True)
+    baby = serializers.HyperlinkedRelatedField(
+        view_name='baby_detail',
+        many=False,
+        read_only=True)
 
     # baby = BabySerializer(
     #     read_only=True
     # )
 
+    # diaper_id = seriarializer.PrimaryKeyRelatedField(
+    #     queryset=Diaper.objects.all(),
+    #     source='diaper',
+    # )
+
     class Meta:
         model = Feeding
         fields = ('log', 'amount',
-                  'method', 'notes')
+                  'method', 'notes', 'baby')
 
 
 class AffirmationSerializer(serializers.HyperlinkedModelSerializer):
