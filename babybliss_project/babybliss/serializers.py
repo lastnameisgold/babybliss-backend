@@ -35,9 +35,22 @@ class BabySerializer(serializers.HyperlinkedModelSerializer):
         many=True,
         read_only=True)
 
+    # diaper_id = serializers.PrimaryKeyRelatedField(
+    #     queryset=Diaper.objects.all(),
+    #     source='diapers',
+    #     many=True,
+    # )
+
+    # feeding_id = serializers.PrimaryKeyRelatedField(
+    #     queryset=Feeding.objects.all(),
+    #     source='feedings',
+    #     many=True,
+    # )
+
     class Meta:
         model = Baby
-        fields = ('name', 'dob', 'gender', 'user', 'diapers', 'feedings')
+        fields = ('name', 'dob', 'gender', 'user', 'diapers',
+                  'feedings')
 
 
 class DiaperSerializer(serializers.HyperlinkedModelSerializer):
@@ -52,7 +65,7 @@ class DiaperSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Diaper
-        fields = ('log', 'diaper', 'rash', 'notes', 'baby')
+        fields = ('log', 'diaper', 'rash', 'notes', 'baby', 'id')
 
 
 class FeedingSerializer(serializers.HyperlinkedModelSerializer):
@@ -73,7 +86,7 @@ class FeedingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Feeding
         fields = ('log', 'amount',
-                  'method', 'notes', 'baby')
+                  'method', 'notes', 'baby', 'id')
 
 
 class AffirmationSerializer(serializers.HyperlinkedModelSerializer):
